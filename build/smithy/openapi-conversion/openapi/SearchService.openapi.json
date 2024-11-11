@@ -1,0 +1,158 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Data Catalog Search",
+        "version": ""
+    },
+    "paths": {
+        "/search/column": {
+            "get": {
+                "operationId": "GetColumnNameSearch",
+                "parameters": [
+                    {
+                        "name": "searchText",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "GetColumnNameSearch 200 response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetColumnNameSearchResponseContent"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/search/description": {
+            "get": {
+                "operationId": "GetTableDescriptionSearch",
+                "parameters": [
+                    {
+                        "name": "searchText",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "GetTableDescriptionSearch 200 response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetTableDescriptionSearchResponseContent"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/search/table": {
+            "get": {
+                "operationId": "GetTableNameSearch",
+                "parameters": [
+                    {
+                        "name": "searchText",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "GetTableNameSearch 200 response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetTableNameSearchResponseContent"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ColumnDetails": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "comment": {
+                        "type": "string"
+                    }
+                }
+            },
+            "GetColumnNameSearchResponseContent": {
+                "type": "object",
+                "properties": {
+                    "tableList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SearchResult"
+                        }
+                    }
+                }
+            },
+            "GetTableDescriptionSearchResponseContent": {
+                "type": "object",
+                "properties": {
+                    "tableList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SearchResult"
+                        }
+                    }
+                }
+            },
+            "GetTableNameSearchResponseContent": {
+                "type": "object",
+                "properties": {
+                    "tableList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SearchResult"
+                        }
+                    }
+                }
+            },
+            "SearchResult": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "columns": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ColumnDetails"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
