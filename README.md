@@ -16,5 +16,9 @@ To convert the Smithy model into Open API format, the ```smithy-build.json``` fi
 
 In this file I specify the ```openapi-conversion``` Smithy projection and the target service (matching the service defined in ```/models/main.smithy```).
 
-Once ```smithy-build.json``` is configured and saved, running the command ```smithy build``` will create an Open API specification for the API in
+Once ```smithy-build.json``` is configured and saved, running the command ```smithy build``` will create an Open API specification for the API in ```build\smithy\openapi-conversion\openapi\SearchService.openapi.json```.
+
+In the AWS Management Console, navigate to API Gateway > APIs > Create API > Import REST API. Uploading the Open API file created above will create the API for you in API Gateway.
+
+The integrations for each of the resources in the newly created API should now be created. In this example I use AWS Lambda Python functions: ```/lambda-functions```
 
